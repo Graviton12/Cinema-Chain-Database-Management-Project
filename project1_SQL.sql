@@ -7,7 +7,7 @@ SET FOREIGN_KEY_CHECKS=0; #Disable ALL foreign key constraint checks
 CREATE TABLE CINEMA (
 	address VARCHAR(250) NOT NULL,
     cinema_name VARCHAR (180) NOT NULL,
-    cinema_ID INT NOT NULL,
+    cinema_ID INT NOT NULL AUTO_INCREMENT,
     primary key (cinema_ID)
 );
 
@@ -44,7 +44,7 @@ CREATE TABLE TICKET (
     movie_name VARCHAR(250) NOT NULL,
     time_slot TIME NOT NULL,
 	email VARCHAR(255) NOT NULL,
-    ticket_price_index VARCHAR(3) NOT NULL,
+    ticket_price_index INT NOT NULL AUTO_INCREMENT,
     primary key (ticket_price_index),
     foreign key (movie_name, time_slot) REFERENCES MOVIE(movie_name, time_slot),
     foreign key (email) REFERENCES PEOPLE(email)
@@ -65,31 +65,35 @@ CREATE TABLE WATCHED (
 # insert values into CINEMA table
 INSERT INTO CINEMA 
 	VALUES
-('4400 Towne Center Dr, Louisville, KY 40241', 'Cinemark Tinseltown', 100),
-('12450 Sycamore Station Pl, Louisville, KY 40299', 'Xscape Theatres', 200),
-('2745 S Hurstbourne Pkwy, Louisville, KY 40220', 'AMC Stonybrook 20', 300),
-('2800 Gottbrath Pkwy, Jeffersonville, IN 47130', 'Xscape Jeffersonville 12', 400),
-('1250 Bardstown Rd, Louisville, KY 40204', 'Baxter Avenue Theatres', 500);
+('4400 Towne Center Dr, Louisville, KY 40241', 'Cinemark Tinseltown', 101),
+('12450 Sycamore Station Pl, Louisville, KY 40299', 'Xscape Theatres', 102),
+('2745 S Hurstbourne Pkwy, Louisville, KY 40220', 'AMC Stonybrook 20', 103),
+('2800 Gottbrath Pkwy, Jeffersonville, IN 47130', 'Xscape Jeffersonville 12', 104),
+('1250 Bardstown Rd, Louisville, KY 40204', 'Baxter Avenue Theatres', 105);
+
+-- Set next auto-increment to 106
+ALTER TABLE CINEMA AUTO_INCREMENT = 106;
 
 # insert values into THEATER table
 INSERT INTO THEATER
 	VALUES
-(250, 100, 'A10'),
-(300, 200, 'B10'),
-(150, 300, 'C10'),
-(450, 400, 'D10'),
-(600, 500, 'E10');
+(250, 101, 'A01'),
+(300, 102, 'A02'),
+(150, 103, 'A03'),
+(450, 104, 'A04'),
+(600, 105, 'A05'),
+(600, 105, 'A06');
 
 # insert values into MOVIE table
 INSERT INTO MOVIE
 	VALUES
-('Steven Spielberg', 'Jaws', '22:00:00', 1975, 5, 'A10'),
-('Christopher Nolan', 'Inception', '13:00:00', 2010, 4, 'B10'),
-('Steven Spielberg', 'Jurassic Park', '14:30:00', 1993, 5, 'C10'),
-('Colin Trevorrow', 'Jurassic World Dominion', '19:30:00', 2022, 2, 'D10'),
-('Adam Wingard', 'Godzilla x Kong: The New Empire', '12:00:00', 2024, 3, 'E10'),
-('Adam Wingard', 'Godzilla x Kong: The New Empire', '10:00:00', 2024, 3, 'F10'),
-('Greta Gerwig', 'Barbie', '23:00:00', 2023, 4, 'F10');
+('Steven Spielberg', 'Jaws', '22:00:00', 1975, 5, 'A01'),
+('Christopher Nolan', 'Inception', '13:00:00', 2010, 4, 'A02'),
+('Steven Spielberg', 'Jurassic Park', '14:30:00', 1993, 5, 'A03'),
+('Colin Trevorrow', 'Jurassic World Dominion', '19:30:00', 2022, 2, 'A04'),
+('Adam Wingard', 'Godzilla x Kong: The New Empire', '12:00:00', 2024, 3, 'A05'),
+('Adam Wingard', 'Godzilla x Kong: The New Empire', '10:00:00', 2024, 3, 'A06'),
+('Greta Gerwig', 'Barbie', '23:00:00', 2023, 4, 'A06');
 
 # insert values into PEOPLE table
 INSERT INTO PEOPLE
@@ -105,13 +109,16 @@ INSERT INTO PEOPLE
 # insert values into TICKET table
 INSERT INTO TICKET
     VALUES
-(15.00, 'Jaws', '22:00:00', 'alex@gmail.com', 'T01'),             -- Alex, $15 per ticket
-(12.00, 'Jurassic World Dominion', '19:30:00', 'derek@hotmail.com', 'T02'), -- Derek, $12 per ticket
-(10.00, 'Jurassic Park', '14:30:00', 'carla@yahoo.com', 'T03'),   -- Carla, $10 per ticket
-(9.00, 'Inception', '13:00:00', 'bella@gmail.com', 'T04'),        -- Bella, $9 per ticket
-(8.00, 'Godzilla x Kong: The New Empire', '12:00:00', 'emma@gmail.com', 'T05'), -- Emma, $8 per ticket
-(7.00, 'Godzilla x Kong: The New Empire', '10:00:00', 'mary@gmail.com', 'T06'),
-(16.00, 'Barbie', '23:00:00', 'sarah710@gmail.com', 'T07'); -- Sarah, $16 per ticket
+(15.00, 'Jaws', '22:00:00', 'alex@gmail.com', 1),             -- Alex, $15 per ticket
+(12.00, 'Jurassic World Dominion', '19:30:00', 'derek@hotmail.com', 2), -- Derek, $12 per ticket
+(10.00, 'Jurassic Park', '14:30:00', 'carla@yahoo.com', 3),   -- Carla, $10 per ticket
+(9.00, 'Inception', '13:00:00', 'bella@gmail.com', 4),        -- Bella, $9 per ticket
+(8.00, 'Godzilla x Kong: The New Empire', '12:00:00', 'emma@gmail.com', 5), -- Emma, $8 per ticket
+(7.00, 'Godzilla x Kong: The New Empire', '10:00:00', 'mary@gmail.com', 6),
+(16.00, 'Barbie', '23:00:00', 'sarah710@gmail.com', 7); -- Sarah, $16 per ticket
+
+-- Set next auto-increment for tickets
+ALTER TABLE TICKET AUTO_INCREMENT = 8;
 
 # insert values into WATCHED table
 INSERT INTO WATCHED
@@ -234,3 +241,11 @@ END;
 DELIMITER ;
 
 CALL revenue_generated_per_movie();
+
+# checking if new entries were added through the GUI system
+SELECT * FROM CINEMA;
+SELECT * FROM THEATER;
+SELECT * FROM MOVIE;
+SELECT * FROM PEOPLE;
+SELECT * FROM TICKET;
+SELECT * FROM WATCHED;
