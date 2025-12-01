@@ -34,7 +34,7 @@ CREATE TABLE MOVIE (
 CREATE TABLE PEOPLE (
 	bdate DATE NOT NULL,
     age_group CHAR(5) NOT NULL,
-    awards_member CHAR(6),
+    awards_member VARCHAR(6),
     email VARCHAR(255) NOT NULL,
     primary key (email)
 );
@@ -99,12 +99,12 @@ INSERT INTO MOVIE
 INSERT INTO PEOPLE
 	VALUES
 ('1998-04-12', 'adult', 'Golden', 'alex@gmail.com'),
-('2011-11-03', 'child', NULL,  'bella@gmail.com'),
+('2011-11-03', 'child', 'None',  'bella@gmail.com'),
 ('1987-07-29', 'adult', 'Silver', 'carla@yahoo.com'),
 ('1975-02-15', 'adult', 'Golden', 'derek@hotmail.com'),
-('2005-09-08', 'adult', NULL, 'emma@gmail.com'),
-('1999-10-05', 'adult', NULL, 'mary@gmail.com'),
-('2010-12-10', 'child', NULL,  'sarah710@gmail.com');
+('2005-09-08', 'adult', 'None', 'emma@gmail.com'),
+('1999-10-05', 'adult', 'None', 'mary@gmail.com'),
+('2010-12-10', 'child', 'None',  'sarah710@gmail.com');
 
 # insert values into TICKET table
 INSERT INTO TICKET
