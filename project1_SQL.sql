@@ -34,7 +34,7 @@ CREATE TABLE MOVIE (
 CREATE TABLE PEOPLE (
 	bdate DATE NOT NULL,
     age_group CHAR(5) NOT NULL,
-    awards_member VARCHAR(6),
+    awards_member VARCHAR(6) NOT NULL,
     email VARCHAR(255) NOT NULL,
     primary key (email)
 );
