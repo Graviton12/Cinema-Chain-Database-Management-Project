@@ -181,9 +181,6 @@ DELIMITER ;
 CALL movies_by_director('Steven Spielberg');
 
 # For all ticket buyers, get their emails, age group, the movie name they watched, the show time, and the ticket price (Stored Procedure Involving a JOIN)
-SELECT PEOPLE.email, age_group, movie_name, time_slot, ticket_price
-FROM PEOPLE JOIN TICKET ON PEOPLE.email = TICKET.email;
-
 DELIMITER //
 
 CREATE PROCEDURE ticket_buyer_info()
